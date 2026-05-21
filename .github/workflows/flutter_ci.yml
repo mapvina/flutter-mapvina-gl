@@ -1,0 +1,162 @@
+name: Flutter CI
+
+on: [push, pull_request, workflow_dispatch]
+
+# Ensure that new pushes/updates cancel running jobs
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  format:
+    name: "Check formatting"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - uses: bluefireteam/melos-action@v3
+        with:
+          run-bootstrap: true
+      - name: Lint analysis
+        run: melos run format-all
+
+  lint:
+    name: "Static code analysis"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - uses: bluefireteam/melos-action@v3
+        with:
+          run-bootstrap: true
+      - name: Lint analysis
+        run: melos run analyze-all
+
+  test:
+    name: "Run tests"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - uses: bluefireteam/melos-action@v3
+        with:
+          run-bootstrap: true
+      - run: melos run test:io:coverage --no-select
+      - name: Upload coverage to Codecov
+        if: always()
+        uses: codecov/codecov-action@v6
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: mapvina_gl_platform_interface/coverage/lcov.info,mapvina_gl/coverage/lcov.info
+
+  test-web:
+    name: "Run web tests"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - uses: bluefireteam/melos-action@v3
+        with:
+          run-bootstrap: true
+      - run: melos run test:web --no-select
+
+  code-gen:
+    name: "Generate code from templates"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - uses: bluefireteam/melos-action@v3
+        with:
+          run-bootstrap: true
+      - run: melos run generate
+      - run: melos run format-all
+      - name: Check Git changes
+        uses: multani/git-changes-action@v1
+
+  build-android:
+    name: "Build Android apk"
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mapvina_gl_example
+    steps:
+      - uses: actions/checkout@v6
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - uses: bluefireteam/melos-action@v3
+        with:
+          run-bootstrap: true
+      - uses: actions/setup-java@v5
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: 'gradle'
+      - name: Build example APK
+        run: flutter build apk
+      - name: Upload apk as artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: mapvina-flutter-demo.apk
+          path: mapvina_gl_example/build/app/outputs/flutter-apk/app-release.apk
+
+  build-iOS:
+    name: Build iOS package
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: mapvina_gl_example
+    steps:
+      - uses: actions/checkout@v6
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - uses: bluefireteam/melos-action@v3
+        with:
+          run-bootstrap: true
+      - uses: maxim-lobanov/setup-cocoapods@v1
+        with:
+          podfile-path: mapvina_gl_example/ios/Podfile.lock
+      - name: Build iOS package
+        run: flutter build ios --simulator
+      - name: Upload Runner.app as artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: mapvina-flutter-demo.app
+          path: mapvina_gl_example/build/ios/iphonesimulator
+
+  build-web:
+    name: "Build web"
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mapvina_gl_example
+    steps:
+      - uses: actions/checkout@v6
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - uses: bluefireteam/melos-action@v3
+        with:
+          run-bootstrap: true
+      - name: Build web
+        run: flutter build web

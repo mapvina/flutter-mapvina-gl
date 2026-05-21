@@ -1,0 +1,71 @@
+group 'com.mapvina.mapvinagl'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    ext.kotlin_version = '2.3.0'
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.13.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    if (project.android.hasProperty("namespace")) {
+        namespace 'com.mapvina.mapvinagl'
+    }
+    compileSdkVersion 36
+    buildToolsVersion "36.0.0"
+
+    ndkVersion "28.1.13356709"
+
+    defaultConfig {
+        minSdkVersion 21
+        compileSdk 36
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_21.toString()
+    }
+    configurations.all {
+        // Exclude the regular (Vulkan) SDK to avoid duplicate classes with the OpenGL variant
+        // If we want to use the Vulkan-based renderer in the future, we can remove this exclusion and switch to the regular SDK dependency below.
+        exclude group: 'io.github.mapvina', module: 'android-sdk'
+    }
+    dependencies {
+        // Using OpenGL instead of new Vulkan-based renderer for now, as it is more stable and has better performance on older devices.
+        // If we want to use the Vulkan-based renderer in the future, we can switch to the regular SDK dependency below and remove the exclusion above.
+        implementation 'io.github.mapvina:android-sdk-opengl:13.1.0'
+        implementation 'io.github.mapvina:android-plugin-annotation-v9:3.0.2'
+        implementation 'io.github.mapvina:android-plugin-offline-v9:3.0.2'
+        implementation 'com.squareup.okhttp3:okhttp:5.3.2'
+        implementation 'com.google.android.gms:play-services-base:18.5.0'
+        implementation 'com.google.android.gms:play-services-location:21.3.0'
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.17.0'
+}

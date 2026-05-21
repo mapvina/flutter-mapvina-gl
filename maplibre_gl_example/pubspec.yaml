@@ -1,0 +1,44 @@
+name: mapvina_gl_example
+description: Demonstrates how to use the mapvina_gl plugin.
+publish_to: 'none'
+version: 0.26.1
+repository: https://github.com/mapvina/flutter-mapvina-gl
+issue_tracker: https://github.com/mapvina/flutter-mapvina-gl/issues
+resolution: workspace
+
+environment:
+  sdk: ">=3.7.0 <4.0.0"
+  flutter: '>=3.22.0'
+
+dependencies:
+  collection: ^1.19.1
+  device_info_plus: 12.3.0
+  flutter:
+    sdk: flutter
+  flutter_hooks: ^0.21.3+1
+  http: ^1.6.0
+  location: ^8.0.1
+  mapvina_gl:
+    path: ../mapvina_gl
+  path_provider: ^2.1.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  very_good_analysis: ^10.2.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/pattern/cat_silhouette_pattern.png
+    - assets/pattern/marker_pattern.png
+    - assets/symbols/custom-icon.png
+    - assets/symbols/2.0x/custom-icon.png
+    - assets/symbols/3.0x/custom-icon.png
+    - assets/symbols/custom-marker.png
+    - assets/style.json
+    - assets/translucent_style.json
+    - assets/osm_style.json
+    - assets/pmtiles_style.json
+    - assets/sydney0.png
+    - assets/sydney1.png

@@ -1,0 +1,35 @@
+name: mapvina_gl_web
+description: Web platform implementation of mapvina_gl. This package is only intended to be used by the mapvina_gl package.
+version: 0.26.1
+repository: https://github.com/mapvina/flutter-mapvina-gl
+issue_tracker: https://github.com/mapvina/flutter-mapvina-gl/issues
+resolution: workspace
+
+environment:
+  sdk: ">=3.7.0 <4.0.0"
+  flutter: '>=3.22.0'
+
+flutter:
+  plugin:
+    platforms:
+      web:
+        pluginClass: MapVinaMapPlugin
+        fileName: mapvina_gl_web.dart
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
+  image: ^4.8.0
+  mapvina_gl_platform_interface: ^0.26.1
+  meta: ^1.17.0
+  web: ^1.1.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  very_good_analysis: ^10.2.0
+
+platforms:
+  web:

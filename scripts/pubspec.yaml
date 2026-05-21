@@ -1,0 +1,16 @@
+name: mapvina_code_gen
+description: code generation for flutter-mapvina-gl
+publish_to: 'none'
+resolution: workspace
+
+version: 0.26.1
+
+environment:
+  sdk: ">=3.7.0 <4.0.0"
+
+dependencies:
+  mustache_template: ^2.0.4
+  recase: ^4.1.0
+
+dev_dependencies:
+  very_good_analysis: ^10.2.0

@@ -1,0 +1,71 @@
+name: mapvina_gl_workspace
+publish_to: 'none'
+repository: https://github.com/mapvina/flutter-mapvina-gl
+issue_tracker: https://github.com/mapvina/flutter-mapvina-gl/issues
+
+environment:
+  sdk: '>=3.7.0 <4.0.0'
+
+dev_dependencies:
+  melos: ^7.4.0
+  very_good_analysis: ^10.0.0
+
+workspace:
+  - scripts
+  - mapvina_gl
+  - mapvina_gl_web
+  - mapvina_gl_example
+  - mapvina_gl_platform_interface
+
+melos:
+  scripts:
+    generate:
+      description: Generate layer & source properties
+      exec: dart run lib/generate.dart
+      packageFilters:
+        scope: mapvina_code_gen
+
+    test:
+      description: Run all tests
+      run: |
+        set -e
+        melos run test:io
+        melos run test:web
+
+    test:io:
+      description: Run IO tests
+      exec: flutter test
+      packageFilters:
+        scope:
+          - mapvina_gl_platform_interface
+          - mapvina_gl
+
+    test:io:coverage:
+      description: Run IO tests with coverage
+      exec: flutter test --coverage
+      packageFilters:
+        scope:
+          - mapvina_gl_platform_interface
+          - mapvina_gl
+
+    test:web:
+      description: Run Web tests
+      exec: flutter test --platform chrome
+      packageFilters:
+        scope:
+          - mapvina_gl_platform_interface
+          - mapvina_gl
+
+    analyze-all:
+      description: Run static analysis on all packages
+      run: |
+        melos exec --concurrency 10 -- "dart analyze --fatal-warnings --fatal-infos"
+
+    format-all:
+      description: Format all packages
+      exec: dart format --set-exit-if-changed .
+
+    fix-all:
+      run: |
+        melos exec --concurrency 10 -- "dart fix --apply"
+        melos exec --concurrency 10 -- "dart format -o write ."
