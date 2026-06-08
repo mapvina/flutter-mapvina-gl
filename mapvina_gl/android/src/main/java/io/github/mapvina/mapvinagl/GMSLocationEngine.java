@@ -19,10 +19,10 @@ import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.Priority;
 
-import io.github.mapvina.android.location.engine.LocationEngineCallback;
-import io.github.mapvina.android.location.engine.LocationEngineImpl;
-import io.github.mapvina.android.location.engine.LocationEngineRequest;
-import io.github.mapvina.android.location.engine.LocationEngineResult;
+import com.mapvina.android.location.engine.LocationEngineCallback;
+import com.mapvina.android.location.engine.LocationEngineImpl;
+import com.mapvina.android.location.engine.LocationEngineRequest;
+import com.mapvina.android.location.engine.LocationEngineResult;
 
 /**
  * A MapVina LocationEngine implementation using Google Play Services.

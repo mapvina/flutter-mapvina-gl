@@ -3,8 +3,8 @@
 // found in the LICENSE file.
 package io.github.mapvina.mapvinagl
 
-import io.github.mapvina.android.geometry.LatLngBounds
-import io.github.mapvina.android.location.engine.LocationEngineRequest
+import com.mapvina.android.geometry.LatLngBounds
+import com.mapvina.android.location.engine.LocationEngineRequest
 
 /** Receiver of MapVinaMap configuration options.  */
 internal interface MapVinaMapOptionsSink {

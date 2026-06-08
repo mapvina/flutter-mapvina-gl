@@ -8,14 +8,14 @@ import android.content.Context;
 import android.graphics.Point;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import io.github.mapvina.android.location.engine.LocationEngineRequest;
-import io.github.mapvina.geojson.Polygon;
-import io.github.mapvina.android.camera.CameraPosition;
-import io.github.mapvina.android.camera.CameraUpdate;
-import io.github.mapvina.android.camera.CameraUpdateFactory;
-import io.github.mapvina.android.geometry.LatLng;
-import io.github.mapvina.android.geometry.LatLngBounds;
-import io.github.mapvina.android.maps.MapVinaMap;
+import com.mapvina.android.location.engine.LocationEngineRequest;
+import com.mapvina.geojson.Polygon;
+import com.mapvina.android.camera.CameraPosition;
+import com.mapvina.android.camera.CameraUpdate;
+import com.mapvina.android.camera.CameraUpdateFactory;
+import com.mapvina.android.geometry.LatLng;
+import com.mapvina.android.geometry.LatLngBounds;
+import com.mapvina.android.maps.MapVinaMap;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -177,12 +177,12 @@ static LocationEngineRequest toLocationEngineRequest(Object o) {
   }
 
   static Polygon interpretListLatLng(List<List<LatLng>> geometry) {
-    List<List<io.github.mapvina.geojson.Point>> points = new ArrayList<>(geometry.size());
+    List<List<com.mapvina.geojson.Point>> points = new ArrayList<>(geometry.size());
     for (List<LatLng> innerGeometry : geometry) {
-      List<io.github.mapvina.geojson.Point> innerPoints = new ArrayList<>(innerGeometry.size());
+      List<com.mapvina.geojson.Point> innerPoints = new ArrayList<>(innerGeometry.size());
       for (LatLng latLng : innerGeometry) {
         innerPoints.add(
-            io.github.mapvina.geojson.Point.fromLngLat(latLng.getLongitude(), latLng.getLatitude()));
+            com.mapvina.geojson.Point.fromLngLat(latLng.getLongitude(), latLng.getLatitude()));
       }
       points.add(innerPoints);
     }

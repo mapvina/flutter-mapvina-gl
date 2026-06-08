@@ -14,10 +14,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 
-import io.github.mapvina.android.location.engine.LocationEngineCallback;
-import io.github.mapvina.android.location.engine.LocationEngineRequest;
-import io.github.mapvina.android.location.engine.LocationEngineResult;
-import io.github.mapvina.android.location.engine.LocationEngineImpl;
+import com.mapvina.android.location.engine.LocationEngineCallback;
+import com.mapvina.android.location.engine.LocationEngineRequest;
+import com.mapvina.android.location.engine.LocationEngineResult;
+import com.mapvina.android.location.engine.LocationEngineImpl;
 
 
 public class MapVinaGPSLocationEngine implements LocationEngineImpl<LocationListener> {

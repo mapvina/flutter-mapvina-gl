@@ -1,6 +1,6 @@
 package io.github.mapvina.mapvinagl;
 
-import io.github.mapvina.android.module.http.HttpRequestUtil;
+import com.mapvina.android.module.http.HttpRequestUtil;
 import io.flutter.plugin.common.MethodChannel;
 import java.util.Map;
 import okhttp3.Dispatcher;

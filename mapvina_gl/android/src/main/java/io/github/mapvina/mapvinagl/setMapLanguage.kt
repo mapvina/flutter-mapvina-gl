@@ -2,10 +2,10 @@
 
 package io.github.mapvina.mapvinagl
 
-import io.github.mapvina.android.maps.MapVinaMap
-import io.github.mapvina.android.style.expressions.Expression
-import io.github.mapvina.android.style.layers.PropertyFactory
-import io.github.mapvina.android.style.layers.SymbolLayer
+import com.mapvina.android.maps.MapVinaMap
+import com.mapvina.android.style.expressions.Expression
+import com.mapvina.android.style.layers.PropertyFactory
+import com.mapvina.android.style.layers.SymbolLayer
 
 fun MapVinaMap.setMapLanguage(language: String) {
     val layers = this.style?.layers ?: emptyList()

@@ -14,7 +14,8 @@ let package = Package(
     dependencies: [
         // When updating the dependency version,
         // make sure to also update the version in mapvina_gl.podspec.
-        .package(url: "https://github.com/mapvina/mapvina-gl-native-distribution.git", exact: "6.25.1"),
+        // For local development: .package(path: "../../../../../../../mapvina-gl-native-distribution"),
+        .package(url: "https://github.com/mapvina/mapvina-gl-native-distribution", exact: "1.0.0"),
     ],
     targets: [
         .target(

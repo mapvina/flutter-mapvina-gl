@@ -12,7 +12,7 @@ import io.flutter.embedding.engine.plugins.activity.ActivityAware;
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
 import io.flutter.embedding.engine.plugins.lifecycle.HiddenLifecycleReference;
 import io.flutter.plugin.common.MethodChannel;
-import io.github.mapvina.android.log.Logger;
+import com.mapvina.android.log.Logger;
 
 /**
  * Plugin for controlling a set of MapVinaMap views to be shown as overlays on top of the Flutter
