@@ -1,7 +1,7 @@
 name: mapvina_gl_workspace
 publish_to: 'none'
-repository: https://github.com/Sunny0025-IT/flutter-mapvina-gl
-issue_tracker: https://github.com/Sunny0025-IT/flutter-mapvina-gl/issues
+repository: https://github.com/mapvina/flutter-mapvina-gl
+issue_tracker: https://github.com/mapvina/flutter-mapvina-gl/issues
 
 environment:
   sdk: '>=3.7.0 <4.0.0'

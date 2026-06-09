@@ -1,8 +1,8 @@
 name: mapvina_gl_web
 description: Web platform implementation of mapvina_gl. This package is only intended to be used by the mapvina_gl package.
 version: 1.0.0
-repository: https://github.com/Sunny0025-IT/flutter-mapvina-gl
-issue_tracker: https://github.com/Sunny0025-IT/flutter-mapvina-gl/issues
+repository: https://github.com/mapvina/flutter-mapvina-gl
+issue_tracker: https://github.com/mapvina/flutter-mapvina-gl/issues
 homepage: https://mapvina.com
 resolution: workspace
 

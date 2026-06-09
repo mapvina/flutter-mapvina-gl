@@ -2,8 +2,8 @@ name: mapvina_gl_example
 description: Demonstrates how to use the mapvina_gl plugin.
 publish_to: 'none'
 version: 1.0.0
-repository: https://github.com/Sunny0025-IT/flutter-mapvina-gl
-issue_tracker: https://github.com/Sunny0025-IT/flutter-mapvina-gl/issues
+repository: https://github.com/mapvina/flutter-mapvina-gl
+issue_tracker: https://github.com/mapvina/flutter-mapvina-gl/issues
 resolution: workspace
 
 environment:
