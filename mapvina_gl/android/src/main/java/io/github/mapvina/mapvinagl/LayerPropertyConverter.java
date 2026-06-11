@@ -3,9 +3,9 @@
 
 package io.github.mapvina.mapvinagl;
 
-import com.mapvina.android.style.expressions.Expression;
-import com.mapvina.android.style.layers.PropertyFactory;
-import com.mapvina.android.style.layers.PropertyValue;
+import io.github.mapvina.android.style.expressions.Expression;
+import io.github.mapvina.android.style.layers.PropertyFactory;
+import io.github.mapvina.android.style.layers.PropertyValue;
 
 import java.util.LinkedList;
 import java.util.List;

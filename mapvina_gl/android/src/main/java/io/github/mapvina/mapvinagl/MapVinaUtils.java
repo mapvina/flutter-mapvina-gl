@@ -1,7 +1,7 @@
 package io.github.mapvina.mapvinagl;
 
 import android.content.Context;
-import com.mapvina.android.MapVina;
+import io.github.mapvina.android.MapVina;
 
 abstract class MapVinaUtils {
   private static final String TAG = "MapVinaMapController";

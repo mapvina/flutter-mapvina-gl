@@ -7,10 +7,10 @@ package io.github.mapvina.mapvinagl;
 import android.content.Context;
 import android.view.Gravity;
 import androidx.annotation.NonNull;
-import com.mapvina.android.camera.CameraPosition;
-import com.mapvina.android.geometry.LatLngBounds;
-import com.mapvina.android.location.engine.LocationEngineRequest;
-import com.mapvina.android.maps.MapVinaMapOptions;
+import io.github.mapvina.android.camera.CameraPosition;
+import io.github.mapvina.android.geometry.LatLngBounds;
+import io.github.mapvina.android.location.engine.LocationEngineRequest;
+import io.github.mapvina.android.maps.MapVinaMapOptions;
 import io.flutter.plugin.common.BinaryMessenger;
 
 class MapVinaMapBuilder implements MapVinaMapOptionsSink {
