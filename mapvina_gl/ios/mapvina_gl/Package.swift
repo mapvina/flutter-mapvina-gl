@@ -13,16 +13,15 @@ let package = Package(
     ],
     dependencies: [
         // Native MapVina is distributed exclusively via Swift Package Manager.
-        // Local development: reference the distribution package through an
-        // in-package symlink (.deps/mapvina-gl-native-distribution) that points
-        // at the sibling distribution repo. A DOWNWARD relative path is required
-        // so it resolves correctly through Flutter's SPM plugin symlink
-        // (<app>/ios/Flutter/ephemeral/Packages/.packages/mapvina_gl). An upward
-        // "../.." path would be resolved lexically against the symlink and escape
-        // the plugin tree (see flutter SPM integration), so we keep it internal.
-        .package(path: ".deps/mapvina-gl-native-distribution"),
-        // Remote release (enable once the public release/tag is available):
-        // .package(url: "https://github.com/mapvina/mapvina-gl-native-distribution", exact: "1.0.0"),
+        // Production: resolve the native distribution package from its public
+        // GitHub release/tag. The distribution package's binaryTarget downloads
+        // the MapVina.xcframework from the mapvina-native release asset, so no
+        // local artifact or sibling checkout is required. Using a remote URL also
+        // avoids Flutter's SPM plugin-symlink path-resolution issues entirely.
+        .package(url: "https://github.com/mapvina/mapvina-gl-native-distribution", exact: "1.0.0"),
+        // Local offline development (uncomment + add a .deps symlink to the
+        // sibling distribution repo if building fully offline in the monorepo):
+        // .package(path: ".deps/mapvina-gl-native-distribution"),
     ],
     targets: [
         .target(
