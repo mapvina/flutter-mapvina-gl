@@ -4,7 +4,8 @@ version '1.0-SNAPSHOT'
 buildscript {
     ext.kotlin_version = '2.3.0'
     repositories {
-        mavenLocal()
+        // Dev-only opt-in via -PuseMavenLocal (kept out of default clean-env resolution).
+        if (project.hasProperty('useMavenLocal')) { mavenLocal() }
         google()
         mavenCentral()
     }
@@ -17,7 +18,8 @@ buildscript {
 
 rootProject.allprojects {
     repositories {
-        mavenLocal()
+        // Dev-only opt-in via -PuseMavenLocal (kept out of default clean-env resolution).
+        if (project.hasProperty('useMavenLocal')) { mavenLocal() }
         google()
         mavenCentral()
     }

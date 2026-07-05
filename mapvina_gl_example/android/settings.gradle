@@ -10,7 +10,8 @@ pluginManagement {
     includeBuild("$flutterSdkPath/packages/flutter_tools/gradle")
 
     repositories {
-        mavenLocal()
+        // Dev-only opt-in via -PuseMavenLocal (kept out of default clean-env resolution).
+        if (gradle.startParameter.projectProperties.containsKey('useMavenLocal')) { mavenLocal() }
         google()
         mavenCentral()
         gradlePluginPortal()

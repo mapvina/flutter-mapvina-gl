@@ -1,7 +1,8 @@
 
 allprojects {
     repositories {
-        mavenLocal()
+        // Dev-only opt-in via -PuseMavenLocal (kept out of default clean-env resolution).
+        if (project.hasProperty('useMavenLocal')) { mavenLocal() }
         google()
         mavenCentral()
     }
