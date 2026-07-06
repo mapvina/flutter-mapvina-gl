@@ -1,3 +1,8 @@
+## 1.0.0
+
+* Rebrand from MapLibre to MapVina.
+* Initial stable release as MapVina.
+
 See top-level [CHANGELOG.md](../CHANGELOG.md) for full details.
 
 ## [0.26.1](https://github.io/github/mapvina/flutter-mapvina-gl/compare/v0.26.0...v0.26.1)

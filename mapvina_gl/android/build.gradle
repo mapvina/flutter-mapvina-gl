@@ -4,6 +4,8 @@ version '1.0-SNAPSHOT'
 buildscript {
     ext.kotlin_version = '2.3.0'
     repositories {
+        // Dev-only opt-in via -PuseMavenLocal (kept out of default clean-env resolution).
+        if (project.hasProperty('useMavenLocal')) { mavenLocal() }
         google()
         mavenCentral()
     }
@@ -16,6 +18,8 @@ buildscript {
 
 rootProject.allprojects {
     repositories {
+        // Dev-only opt-in via -PuseMavenLocal (kept out of default clean-env resolution).
+        if (project.hasProperty('useMavenLocal')) { mavenLocal() }
         google()
         mavenCentral()
     }
@@ -39,6 +43,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
+
     lintOptions {
         disable 'InvalidPackage'
     }
@@ -53,16 +58,25 @@ android {
         // Exclude the regular (Vulkan) SDK to avoid duplicate classes with the OpenGL variant
         // If we want to use the Vulkan-based renderer in the future, we can remove this exclusion and switch to the regular SDK dependency below.
         exclude group: 'io.github.mapvina', module: 'android-sdk'
+        exclude group: 'io.github.mapvina', module: 'android-sdk-vulkan'
     }
     dependencies {
         // Using OpenGL instead of new Vulkan-based renderer for now, as it is more stable and has better performance on older devices.
         // If we want to use the Vulkan-based renderer in the future, we can switch to the regular SDK dependency below and remove the exclusion above.
-        implementation 'io.github.mapvina:android-sdk-opengl:1.0.0'
+        implementation 'io.github.mapvina:android-sdk-opengl:1.0.1'
         implementation 'io.github.mapvina:android-plugin-annotation-v9:1.0.0'
         implementation 'io.github.mapvina:android-plugin-offline-v9:1.0.0'
         implementation 'com.squareup.okhttp3:okhttp:5.3.2'
         implementation 'com.google.android.gms:play-services-base:18.5.0'
         implementation 'com.google.android.gms:play-services-location:21.3.0'
+        // Explicitly add transitive dependencies from android-sdk-opengl
+        implementation 'io.github.mapvina:android-sdk-geojson:1.0.0'
+        implementation 'io.github.mapvina:mapvina-android-gestures:1.0.0'
+        implementation 'io.github.mapvina:android-sdk-turf:1.0.0'
+        implementation 'androidx.annotation:annotation:1.8.2'
+        implementation 'androidx.fragment:fragment:1.8.9'
+        implementation 'androidx.interpolator:interpolator:1.0.0'
+        implementation 'com.jakewharton.timber:timber:5.0.1'
     }
 }
 

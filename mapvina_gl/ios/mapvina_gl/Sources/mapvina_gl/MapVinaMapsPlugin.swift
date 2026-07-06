@@ -8,6 +8,18 @@ public class MapVinaMapsPlugin: NSObject, FlutterPlugin {
 
 
     public static func register(with registrar: FlutterPluginRegistrar) {
+        // Configure the native MapVina SDK's tile server BEFORE any MLNMapView
+        // is created. The SDK's DefaultConfiguration is MapVina, whose tile
+        // sources are treated as "canonical" and REQUIRE an API key; with no
+        // key set the native resource loader throws
+        //   std::runtime_error("You must provide API key for tile sources")
+        // and crashes (SIGABRT) right after the map starts loading.
+        // The shipped native iOS sample apps load the same maps.mapvina.com
+        // style with MapTiler options (which treat the full https tile URLs as
+        // non-canonical and pass them through as-is, with the key already
+        // embedded in the style URL), so we mirror that proven configuration.
+        MLNSettings.use(.mapTiler)
+
         let instance = MapVinaMapFactory(withRegistrar: registrar)
         registrar.register(instance, withId: "plugins.flutter.io/mapvina_gl")
 

@@ -1,3 +1,8 @@
+## 1.0.0
+
+* Rebrand from MapLibre to MapVina.
+* Initial stable release as MapVina.
+
 ## [0.26.1](https://github.io/github/mapvina/flutter-mapvina-gl/compare/v0.26.0...v0.26.1)
 
 > **Note:** Several users reported crashes on a range of Android devices after upgrading to 0.26.0, particularly on older / less recent hardware. These issues are addressed in 0.26.1 (see the Android fixes below).
