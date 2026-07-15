@@ -12,12 +12,12 @@ environment:
 
 dependencies:
   collection: ^1.19.1
-  device_info_plus: 12.3.0
+  device_info_plus: 13.2.0
   flutter:
     sdk: flutter
   flutter_hooks: ^0.21.3+1
   http: ^1.6.0
-  location: ^8.0.1
+  location: ^9.0.0
   mapvina_gl:
     path: ../mapvina_gl
   path_provider: ^2.1.5
