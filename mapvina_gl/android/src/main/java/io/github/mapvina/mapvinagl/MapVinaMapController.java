@@ -37,55 +37,55 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
 import org.jetbrains.annotations.NotNull;
-import com.mapvina.android.camera.CameraPosition;
-import com.mapvina.android.camera.CameraUpdate;
-import com.mapvina.android.camera.CameraUpdateFactory;
-import com.mapvina.android.constants.MapVinaConstants;
-import com.mapvina.android.geometry.LatLng;
-import com.mapvina.android.geometry.LatLngBounds;
-import com.mapvina.android.geometry.LatLngQuad;
-import com.mapvina.android.geometry.VisibleRegion;
-import com.mapvina.android.gestures.AndroidGesturesManager;
-import com.mapvina.android.gestures.MoveGestureDetector;
-import com.mapvina.android.location.LocationComponent;
-import com.mapvina.android.location.LocationComponentActivationOptions;
-import com.mapvina.android.location.LocationComponentOptions;
-import com.mapvina.android.location.OnCameraTrackingChangedListener;
-import com.mapvina.android.location.engine.LocationEngineCallback;
-import com.mapvina.android.location.engine.LocationEngineRequest;
-import com.mapvina.android.location.engine.LocationEngineResult;
-import com.mapvina.android.location.modes.CameraMode;
-import com.mapvina.android.location.modes.RenderMode;
-import com.mapvina.android.maps.MapVinaMap;
-import com.mapvina.android.maps.MapVinaMapOptions;
-import com.mapvina.android.maps.MapView;
-import com.mapvina.android.maps.OnMapReadyCallback;
-import com.mapvina.android.maps.Style;
-import com.mapvina.android.offline.OfflineManager;
-import com.mapvina.android.style.expressions.Expression;
-import com.mapvina.android.style.layers.CircleLayer;
-import com.mapvina.android.style.layers.FillExtrusionLayer;
-import com.mapvina.android.style.layers.FillLayer;
-import com.mapvina.android.style.layers.HeatmapLayer;
-import com.mapvina.android.style.layers.HillshadeLayer;
-import com.mapvina.android.style.layers.Layer;
-import com.mapvina.android.style.layers.LineLayer;
-import com.mapvina.android.style.layers.Property;
-import com.mapvina.android.style.layers.PropertyFactory;
-import com.mapvina.android.style.layers.PropertyValue;
-import com.mapvina.android.style.layers.RasterLayer;
-import com.mapvina.android.style.layers.SymbolLayer;
-import com.mapvina.android.style.sources.CustomGeometrySource;
-import com.mapvina.android.style.sources.GeoJsonOptions;
-import com.mapvina.android.style.sources.GeoJsonSource;
-import com.mapvina.android.style.sources.ImageSource;
-import com.mapvina.android.style.sources.Source;
-import com.mapvina.android.style.sources.VectorSource;
-import com.mapvina.geojson.Feature;
-import com.mapvina.geojson.FeatureCollection;
-import com.mapvina.android.net.ConnectivityReceiver;
-import com.mapvina.android.snapshotter.MapSnapshot;
-import com.mapvina.android.snapshotter.MapSnapshotter;
+import io.github.mapvina.android.camera.CameraPosition;
+import io.github.mapvina.android.camera.CameraUpdate;
+import io.github.mapvina.android.camera.CameraUpdateFactory;
+import io.github.mapvina.android.constants.MapVinaConstants;
+import io.github.mapvina.android.geometry.LatLng;
+import io.github.mapvina.android.geometry.LatLngBounds;
+import io.github.mapvina.android.geometry.LatLngQuad;
+import io.github.mapvina.android.geometry.VisibleRegion;
+import io.github.mapvina.android.gestures.AndroidGesturesManager;
+import io.github.mapvina.android.gestures.MoveGestureDetector;
+import io.github.mapvina.android.location.LocationComponent;
+import io.github.mapvina.android.location.LocationComponentActivationOptions;
+import io.github.mapvina.android.location.LocationComponentOptions;
+import io.github.mapvina.android.location.OnCameraTrackingChangedListener;
+import io.github.mapvina.android.location.engine.LocationEngineCallback;
+import io.github.mapvina.android.location.engine.LocationEngineRequest;
+import io.github.mapvina.android.location.engine.LocationEngineResult;
+import io.github.mapvina.android.location.modes.CameraMode;
+import io.github.mapvina.android.location.modes.RenderMode;
+import io.github.mapvina.android.maps.MapVinaMap;
+import io.github.mapvina.android.maps.MapVinaMapOptions;
+import io.github.mapvina.android.maps.MapView;
+import io.github.mapvina.android.maps.OnMapReadyCallback;
+import io.github.mapvina.android.maps.Style;
+import io.github.mapvina.android.offline.OfflineManager;
+import io.github.mapvina.android.style.expressions.Expression;
+import io.github.mapvina.android.style.layers.CircleLayer;
+import io.github.mapvina.android.style.layers.FillExtrusionLayer;
+import io.github.mapvina.android.style.layers.FillLayer;
+import io.github.mapvina.android.style.layers.HeatmapLayer;
+import io.github.mapvina.android.style.layers.HillshadeLayer;
+import io.github.mapvina.android.style.layers.Layer;
+import io.github.mapvina.android.style.layers.LineLayer;
+import io.github.mapvina.android.style.layers.Property;
+import io.github.mapvina.android.style.layers.PropertyFactory;
+import io.github.mapvina.android.style.layers.PropertyValue;
+import io.github.mapvina.android.style.layers.RasterLayer;
+import io.github.mapvina.android.style.layers.SymbolLayer;
+import io.github.mapvina.android.style.sources.CustomGeometrySource;
+import io.github.mapvina.android.style.sources.GeoJsonOptions;
+import io.github.mapvina.android.style.sources.GeoJsonSource;
+import io.github.mapvina.android.style.sources.ImageSource;
+import io.github.mapvina.android.style.sources.Source;
+import io.github.mapvina.android.style.sources.VectorSource;
+import io.github.mapvina.geojson.Feature;
+import io.github.mapvina.geojson.FeatureCollection;
+import io.github.mapvina.android.net.ConnectivityReceiver;
+import io.github.mapvina.android.snapshotter.MapSnapshot;
+import io.github.mapvina.android.snapshotter.MapSnapshotter;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -224,7 +224,13 @@ final class MapVinaMapController
   void init() {
     lifecycleProvider.getLifecycle().addObserver(this);
     context.registerComponentCallbacks(this);
-    mapView.getMapAsync(this);
+    // Initialize map asynchronously to avoid blocking main thread
+    mapView.post(new Runnable() {
+      @Override
+      public void run() {
+        mapView.getMapAsync(MapVinaMapController.this);
+      }
+    });
   }
 
   private void moveCamera(CameraUpdate cameraUpdate) {

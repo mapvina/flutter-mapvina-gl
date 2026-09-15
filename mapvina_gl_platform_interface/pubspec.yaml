@@ -1,15 +1,15 @@
 name: mapvina_gl_platform_interface
 description: A common platform interface for the mapvina_gl plugin. This package is only intended to be used by the mapvina_gl package.
-version: 1.0.0
+version: 1.0.1
 repository: https://github.com/mapvina/flutter-mapvina-gl
 issue_tracker: https://github.com/mapvina/flutter-mapvina-gl/issues
 homepage: https://mapvina.com
-resolution: workspace
 
 environment:
   sdk: ">=3.7.0 <4.0.0"
   flutter: '>=3.22.0'
 
+resolution: workspace
 dependencies:
   flutter:
     sdk: flutter
