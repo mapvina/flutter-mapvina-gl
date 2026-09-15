@@ -1,3 +1,8 @@
+## 1.0.1
+
+* Android: upgrade MapVina Native SDK from `io.github.mapvina:android-sdk-opengl:1.0.1` to `1.0.2`.
+* iOS: keep MapVina Native distribution `1.0.0` until a new iOS XCFramework is published.
+
 ## 1.0.0
 
 * Rebrand from MapLibre to MapVina.

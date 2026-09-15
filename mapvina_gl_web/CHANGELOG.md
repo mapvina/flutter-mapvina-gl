@@ -1,3 +1,7 @@
+## 1.0.1
+
+* Version aligned with `mapvina_gl` 1.0.1. No web-specific changes.
+
 ## 1.0.0
 
 * Rebrand from MapLibre to MapVina.
