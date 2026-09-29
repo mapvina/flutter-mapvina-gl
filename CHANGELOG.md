@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.0.1
+
+* **Android**: Upgrade MapVina Native SDK from `io.github.mapvina:android-sdk-opengl:1.0.1` to `1.0.2`.
+* **iOS**: Keep MapVina Native distribution `1.0.0` until a new iOS XCFramework is published.
+
 ## [0.26.1](https://github.io/github/mapvina/flutter-mapvina-gl/compare/v0.26.0...v0.26.1)
 
 > **Note:** Several users reported crashes on a range of Android devices after upgrading to 0.26.0, particularly on older / less recent hardware. These issues are addressed in 0.26.1 (see the Android fixes below).

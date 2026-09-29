@@ -3,11 +3,11 @@ package io.github.mapvina.mapvinagl
 import android.content.Context
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
-import com.mapvina.android.location.LocationComponent
-import com.mapvina.android.location.engine.LocationEngine
-import com.mapvina.android.location.engine.LocationEngineDefault.getDefaultLocationEngine
-import com.mapvina.android.location.engine.LocationEngineProxy
-import com.mapvina.android.location.engine.LocationEngineRequest
+import io.github.mapvina.android.location.LocationComponent
+import io.github.mapvina.android.location.engine.LocationEngine
+import io.github.mapvina.android.location.engine.LocationEngineDefault.getDefaultLocationEngine
+import io.github.mapvina.android.location.engine.LocationEngineProxy
+import io.github.mapvina.android.location.engine.LocationEngineRequest
 
 class LocationEngineFactory {
 

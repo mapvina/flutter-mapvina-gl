@@ -1,6 +1,6 @@
 package io.github.mapvina.mapvinagl;
 
-import com.mapvina.android.module.http.HttpRequestUtil;
+import io.github.mapvina.android.module.http.HttpRequestUtil;
 import io.flutter.plugin.common.MethodChannel;
 import java.util.Map;
 import java.util.HashMap;

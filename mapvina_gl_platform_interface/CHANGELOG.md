@@ -1,3 +1,12 @@
+## 1.0.1
+
+* Version aligned with `mapvina_gl` 1.0.1. No platform-interface API changes.
+
+## 1.0.0
+
+* Rebrand from MapLibre to MapVina.
+* Initial stable release as MapVina.
+
 ## [0.26.1](https://github.io/github/mapvina/flutter-mapvina-gl/compare/v0.26.0...v0.26.1)
 
 See top-level [CHANGELOG.md](../CHANGELOG.md) for full details.
