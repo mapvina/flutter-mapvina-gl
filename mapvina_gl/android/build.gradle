@@ -70,9 +70,9 @@ android {
         implementation 'com.google.android.gms:play-services-base:18.5.0'
         implementation 'com.google.android.gms:play-services-location:21.3.0'
         // Explicitly add transitive dependencies from android-sdk-opengl
-        implementation 'io.github.mapvina:android-sdk-geojson:1.0.0'
-        implementation 'io.github.mapvina:mapvina-android-gestures:1.0.0'
-        implementation 'io.github.mapvina:android-sdk-turf:1.0.0'
+        implementation 'io.github.mapvina:android-sdk-geojson:1.0.1'
+        implementation 'io.github.mapvina:mapvina-android-gestures:1.0.1'
+        implementation 'io.github.mapvina:android-sdk-turf:1.0.1'
         implementation 'androidx.annotation:annotation:1.8.2'
         implementation 'androidx.fragment:fragment:1.8.9'
         implementation 'androidx.interpolator:interpolator:1.0.0'
