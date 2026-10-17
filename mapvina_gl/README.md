@@ -8,15 +8,20 @@
 
 # Flutter MapVina GL
 
+> **Verification 04/10/2026:** public `mapvina_gl: 1.0.1` resolves, but Android/iOS
+> integration builds are BLOCKED. [Reproductions and limitations](../docs/verification/2026-10-04/README.md).
+> The examples below are API references, not a verified production integration.
+> No SDK version or source code is changed by this documentation PR.
+
 [![Pub Version](https://img.shields.io/pub/v/mapvina_gl)](https://pub.dev/packages/mapvina_gl)
 [![likes](https://img.shields.io/pub/likes/mapvina_gl?logo=flutter)](https://pub.dev/packages/mapvina_gl)
 [![Pub Points](https://img.shields.io/pub/points/mapvina_gl)](https://pub.dev/packages/mapvina_gl/score)
-[![stars](https://badgen.net/github/stars/mapvina/flutter-mapvina-gl?label=stars&color=green&icon=github)](https://github.com/josxha/flutter-mapvina-gl/stargazers)
+[![stars](https://badgen.net/github/stars/mapvina/flutter-mapvina-gl?label=stars&color=green&icon=github)](https://github.com/mapvina/flutter-mapvina-gl/stargazers)
 [![melos](https://img.shields.io/badge/maintained%20with-melos-f700ff.svg?style=flat-square)](https://github.com/invertase/melos)
 
 Flutter MapVina GL lets you embed **interactive, vector-tile based, fully styleable maps** directly inside your Flutter app across mobile & web.
 
-This project is a fork of [flutter-mapbox-gl](https://github.com/tobrun/flutter-mapbox-gl), replacing its usage of Mapbox GL libraries with the open source [MapVina GL](https://github.io/github/mapvina) libraries.
+This project is a fork of [flutter-mapbox-gl](https://github.com/tobrun/flutter-mapbox-gl), replacing its usage of Mapbox GL libraries with the open source [MapVina Native](https://github.com/mapvina/mapvina-native) libraries.
 
 ---
 
@@ -93,8 +98,8 @@ If you previously used `flutter-mapbox-gl`, you can migrate with minimal changes
 ## Supported Platforms & API Coverage
 
 Underlying engines:
-* **Android / iOS** — [mapvina-native](https://github.io/github/mapvina/mapvina-native)
-* **Web** — [mapvina-gl-js](https://github.io/github/mapvina/mapvina-gl-js)
+* **Android / iOS** — [mapvina-native](https://github.com/mapvina/mapvina-native)
+* **Web** — `mapvina-gl-js` (repository URL not verified)
 
 > **Note**: Only a subset of the native SDK APIs are currently exposed. PRs to extend surface area are welcome.
 
@@ -262,7 +267,7 @@ https://tiles.example.com/{z}/{x}/{y}.vector.pbf?api_key=YOUR_KEY
 ## Advanced Topics
 
 ### Offline usage / mbtiles
-Copy mbtiles (or sprites/glyphs) from bundled assets to a writable directory (e.g. cache) and point your style sources there. See issues [#338](https://github.io/github/mapvina/flutter-mapvina-gl/issues/338) & [#318](https://github.io/github/mapvina/flutter-mapvina-gl/issues/318) for community approaches.
+Copy mbtiles (or sprites/glyphs) from bundled assets to a writable directory (e.g. cache) and point your style sources there. Offline file-copy approaches are reference-only and were not tested in this audit.
 
 ### PMTiles
 The example app includes a `pmtiles` usage sample demonstrating how to load datasets via a custom protocol handler / tile source. (Look for `pmtiles.dart` in `mapvina_gl_example`.)
@@ -320,7 +325,7 @@ Environment variable injection at build time is recommended for CI-driven apps�
 ## Troubleshooting / FAQ
 
 ### Loading .mbtiles / sprites / glyphs from app assets
-Copy them to a writable directory (cache/documents) first, then reference the new path in the style or source configuration. See issues [#338](https://github.io/github/mapvina/flutter-mapvina-gl/issues/338) & [#318](https://github.io/github/mapvina/flutter-mapvina-gl/issues/318).
+Copy them to a writable directory (cache/documents) first, then reference the new path in the style or source configuration. Offline source loading was not tested in this audit.
 
 ### Android UnsatisfiedLinkError
 Ensure `abiFilters` include the ABIs you intend to ship:
@@ -348,7 +353,7 @@ Error: `Invalid filter value: filter property must be a string`. Replace `["!has
 * Minimal example (for pub.dev & quick start): see [`example/lib/main.dart`](./example/lib/main.dart)
 * Full featured example app: [`mapvina_gl_example`](./mapvina_gl_example)
 * API docs: https://pub.dev/documentation/mapvina_gl/latest/
-* MapVina upstream projects: [mapvina-gl-js](https://github.io/github/mapvina/mapvina-gl-js), [mapvina-native](https://github.io/github/mapvina/mapvina-native)
+* MapVina upstream projects: `mapvina-gl-js` (repository URL not verified), [mapvina-native](https://github.com/mapvina/mapvina-native)
 
 ---
 
@@ -379,8 +384,8 @@ Please read the full [CONTRIBUTING.md](./CONTRIBUTING.md) before submitting a PR
 ## Getting Help
 * Join our [Slack](https://slack.openstreetmap.us/) channel
 * StackOverflow tag: [#mapvina](https://stackoverflow.com/questions/tagged/mapvina)
-* Discussions: https://github.io/github/mapvina/flutter-mapvina-gl/discussions
-* Bugs / Features: [Open an issue](https://github.io/github/mapvina/flutter-mapvina-gl/issues/new) (include reproduction details/logs where possible)
+* Discussions: https://github.com/mapvina/flutter-mapvina-gl/issues
+* Bugs / Features: [Open an issue](https://github.com/mapvina/flutter-mapvina-gl/issues/new) (include reproduction details/logs where possible)
 
 ---
 
