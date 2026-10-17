@@ -64,3 +64,5 @@ temp/
 
 # AI Tools
 .claude
+mapvina_gl/example/android/
+mapvina_gl/example/ios/
